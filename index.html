@@ -1,0 +1,995 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Vacilón Salsa Club - La Fiesta Exclusiva de Fin de Año</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a0b00 0%, #2d1810 50%, #1a0b00 100%);
+    }
+
+    .logo-top-right {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      width: 150px;
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+      transition: transform 0.3s ease;
+    }
+
+    .logo-top-right:hover {
+      transform: scale(1.1);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255, 140, 0, 0.1) 0%, transparent 50%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .fireworks {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .firework {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #ffd700;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #ffd700;
+      animation: fireworkAnim 2s ease-out infinite;
+    }
+
+    @keyframes fireworkAnim {
+      0% { transform: translateY(100vh) scale(0); opacity: 1; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+    }
+
+    .firework:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .firework:nth-child(2) { left: 30%; animation-delay: 0.5s; background: #ff6b35; box-shadow: 0 0 20px #ff6b35; }
+    .firework:nth-child(3) { left: 50%; animation-delay: 1s; background: #00d9ff; box-shadow: 0 0 20px #00d9ff; }
+    .firework:nth-child(4) { left: 70%; animation-delay: 1.5s; background: #ffd700; box-shadow: 0 0 20px #ffd700; }
+    .firework:nth-child(5) { left: 90%; animation-delay: 0.8s; background: #ff006e; box-shadow: 0 0 20px #ff006e; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 20px;
+      max-width: 1200px;
+    }
+
+    .logo-container {
+      margin-bottom: 30px;
+      animation: fadeInDown 1.5s ease;
+    }
+
+    .logo-text {
+      font-size: 6rem;
+      font-weight: 900;
+      background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 80px rgba(255, 215, 0, 0.5);
+      animation: shine 3s ease-in-out infinite, float 3s ease-in-out infinite;
+      letter-spacing: 8px;
+      font-family: 'Georgia', serif;
+    }
+
+    @keyframes shine {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subtitle {
+      font-size: 1.8rem;
+      color: #ffd700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      animation: fadeIn 2s ease 0.5s backwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 900;
+      margin: 20px 0;
+      background: linear-gradient(to right, #fff, #ffd700, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 2s ease 0.8s backwards;
+      line-height: 1.2;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-description {
+      font-size: 1.3rem;
+      color: #e0e0e0;
+      margin: 30px auto;
+      max-width: 800px;
+      animation: fadeIn 2s ease 1.2s backwards;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      animation: fadeInUp 2s ease 1.5s backwards;
+    }
+
+    .btn {
+      padding: 18px 45px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.4s ease;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ffd700, #ffed4e);
+      color: #000;
+      box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 50px rgba(255, 215, 0, 0.6);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffd700;
+      border: 3px solid #ffd700;
+      box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: #ffd700;
+      color: #000;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 50px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-20px); }
+      60% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    .scroll-indicator::before {
+      content: '⌄';
+      font-size: 3rem;
+      color: #ffd700;
+      opacity: 0.7;
+    }
+
+    /* Package Section */
+    .package-section {
+      padding: 100px 20px;
+      background: linear-gradient(180deg, #000 0%, #1a0b00 100%);
+      position: relative;
+    }
+
+    .package-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(180deg, transparent 0%, #000 100%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 3.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #ffd700, #ffed4e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #b8b8b8;
+      margin-bottom: 60px;
+    }
+
+    .package-card {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 140, 0, 0.05) 100%);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 30px;
+      padding: 60px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .package-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .package-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(255, 215, 0, 0.4);
+      border-color: rgba(255, 215, 0, 0.6);
+    }
+
+    .package-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .price-tag {
+      text-align: center;
+      margin: 30px 0 40px;
+    }
+
+    .price {
+      font-size: 4rem;
+      font-weight: 900;
+      background: linear-gradient(45deg, #ffd700, #ffed4e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .price-label {
+      font-size: 1.1rem;
+      color: #b8b8b8;
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      background: rgba(255, 215, 0, 0.08);
+      border-color: rgba(255, 215, 0, 0.3);
+      transform: translateX(10px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      min-width: 40px;
+    }
+
+    .feature-text h3 {
+      font-size: 1.3rem;
+      color: #ffd700;
+      margin-bottom: 5px;
+    }
+
+    .feature-text p {
+      color: #b8b8b8;
+      font-size: 1rem;
+    }
+
+    .note-box {
+      background: rgba(255, 215, 0, 0.1);
+      border-left: 4px solid #ffd700;
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 40px;
+    }
+
+    .note-box strong {
+      color: #ffd700;
+      font-size: 1.2rem;
+    }
+
+    /* DJs Section */
+    .dj-section {
+      padding: 100px 20px;
+      background: #000;
+    }
+
+    .dj-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .dj-card {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 140, 0, 0.05) 100%);
+      border: 2px solid rgba(255, 215, 0, 0.2);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dj-card::before {
+      content: '♪';
+      position: absolute;
+      font-size: 15rem;
+      color: rgba(255, 215, 0, 0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-15deg);
+    }
+
+    .dj-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 30px 60px rgba(255, 215, 0, 0.3);
+      border-color: rgba(255, 215, 0, 0.5);
+    }
+
+    .dj-name {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(45deg, #ffd700, #ffed4e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 20px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 100px 20px;
+      background: linear-gradient(180deg, #000 0%, #1a0b00 100%);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 140, 0, 0.05) 100%);
+      border: 2px solid rgba(255, 215, 0, 0.2);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+      border-color: rgba(255, 215, 0, 0.5);
+    }
+
+    .contact-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-card h3 {
+      font-size: 1.5rem;
+      color: #ffd700;
+      margin-bottom: 15px;
+    }
+
+    .contact-card p,
+    .contact-card a {
+      color: #e0e0e0;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-card a:hover {
+      color: #ffd700;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      padding: 60px 20px 30px;
+      text-align: center;
+      border-top: 2px solid rgba(255, 215, 0, 0.2);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(45deg, #ffd700, #ffed4e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    .social-links {
+      margin: 30px 0;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 15px;
+      color: #ffd700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+      color: #ffed4e;
+    }
+
+    .copyright {
+      color: #666;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    /* WhatsApp Float Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25d366;
+      color: #fff;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      animation: pulse-whatsapp 2s infinite;
+    }
+
+    @keyframes pulse-whatsapp {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.2);
+      box-shadow: 0 15px 40px rgba(37, 211, 102, 0.7);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .logo-top-right {
+        width: 100px;
+        top: 15px;
+        right: 15px;
+      }
+
+      .logo-text {
+        font-size: 3.5rem;
+        letter-spacing: 4px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .price {
+        font-size: 2.5rem;
+      }
+
+      .package-card {
+        padding: 30px 20px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .dj-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .dj-name {
+        font-size: 2rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .contact-card {
+        transform: none !important;
+      }
+
+      .contact-card[style*="scale"] {
+        transform: scale(1) !important;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        padding: 0 20px;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 16px 35px;
+        font-size: 1.1rem;
+      }
+
+      .whatsapp-float {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .footer-logo {
+        font-size: 2.5rem;
+      }
+
+      .social-links a {
+        font-size: 1rem;
+        margin: 0 10px;
+      }
+
+      .container {
+        padding: 40px 15px;
+      }
+
+      .package-section,
+      .dj-section,
+      .contact-section {
+        padding: 60px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .price {
+        font-size: 2rem;
+      }
+
+      .btn {
+        font-size: 1rem;
+        padding: 14px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo top right -->
+  <img src="logo_elvacilon.png" alt="El Vacilón Salsa Club" class="logo-top-right">
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="fireworks">
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+    </div>
+    
+    <div class="hero-content">
+      <div class="logo-container">
+        <div class="logo-text">El Vacilón</div>
+        <div class="subtitle">Salsa Club</div>
+      </div>
+      
+      <h1 class="hero-title">La Fiesta Exclusiva<br>de Fin de Año</h1>
+      
+      <p class="hero-description">
+        Celebra con estilo en el lugar más exclusivo de Cali. Un espacio único para fiestas empresariales 
+        y eventos de fin de año que tus invitados nunca olvidarán.
+      </p>
+      
+      <div class="cta-buttons">
+        <a href="#paquete" class="btn btn-primary">
+          <span>Ver Paquete</span>
+        </a>
+        <a href="https://wa.me/573176344778?text=Hola,%20quiero%20información%20sobre%20eventos%20de%20fin%20de%20año" class="btn btn-secondary" target="_blank">
+          <span>Reservar Ahora</span>
+        </a>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator"></div>
+  </section>
+
+  <!-- Package Section -->
+  <section id="paquete" class="package-section">
+    <div class="container">
+      <h2 class="section-title">Paquete Completo</h2>
+      <p class="section-subtitle">Todo lo que necesitas para una celebración inolvidable</p>
+      
+      <div class="package-card">
+        <div class="package-content">
+          <div class="price-tag">
+            <div class="price">$2.800.000</div>
+            <div class="price-label">COP - Paquete Todo Incluido</div>
+          </div>
+          
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-icon">👥</div>
+              <div class="feature-text">
+                <h3>Capacidad Total</h3>
+                <p>Espacio para 180 personas con comodidad y estilo</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">🎧</div>
+              <div class="feature-text">
+                <h3>DJs Profesionales</h3>
+                <p>DJ Cocoliso & DJ Alexx en vivo durante todo el evento</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">🎵</div>
+              <div class="feature-text">
+                <h3>Música y Sonido</h3>
+                <p>Sistema de audio profesional de última generación</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">💡</div>
+              <div class="feature-text">
+                <h3>Luces Espectaculares</h3>
+                <p>Iluminación profesional para crear el ambiente perfecto</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">🍽️</div>
+              <div class="feature-text">
+                <h3>Personal Completo</h3>
+                <p>Meseros profesionales a su servicio</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">🔒</div>
+              <div class="feature-text">
+                <h3>Seguridad</h3>
+                <p>Equipo de seguridad para tu tranquilidad</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">✨</div>
+              <div class="feature-text">
+                <h3>Aseo y Limpieza</h3>
+                <p>Personal de aseo durante y después del evento</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">📋</div>
+              <div class="feature-text">
+                <h3>Logística Total</h3>
+                <p>Nos encargamos de todos los detalles</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="note-box">
+            <p><strong>Nota importante:</strong> Este paquete no incluye licor. Si desea adicionar licor u otros servicios especiales (decoración temática, fotografía, catering especial, etc.), podemos ajustar la propuesta según sus requerimientos y presupuesto.</p>
+          </div>
+          
+          <div style="text-align: center; margin-top: 40px;">
+            <a href="https://wa.me/573176344778?text=Hola,%20quiero%20reservar%20para%20fin%20de%20año" class="btn btn-primary">
+              <span>Reservar Este Paquete</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DJs Section -->
+  <section class="dj-section">
+    <div class="container">
+      <h2 class="section-title">Nuestros DJs</h2>
+      <p class="section-subtitle">Profesionales de trayectoria que garantizan una noche inolvidable</p>
+      
+      <div class="dj-cards">
+        <div class="dj-card">
+          <div class="dj-name">DJ Cocoliso</div>
+          <p style="color: #b8b8b8; font-size: 1.05rem; line-height: 1.8; text-align: left;">
+            DJ con sólida trayectoria en la escena salsera de Cali, reconocido por su habilidad para leer al público y mantener la energía del baile en su punto más alto. Especialista en salsa clásica, dura y romántica, con dominio excepcional de mezclas fluidas que rescatan los grandes clásicos.
+            <br><br>
+            Su experiencia abarca clubes emblemáticos, eventos corporativos y festivales, donde destaca por su profesionalismo y capacidad para crear ambientes memorables. Comprometido con la excelencia artística y el respeto por la cultura salsera.
+          </p>
+        </div>
+        
+        <div class="dj-card">
+          <div class="dj-name">DJ Alexx</div>
+          <p style="color: #b8b8b8; font-size: 1.05rem; line-height: 1.8; text-align: left;">
+            DJ versátil con amplia experiencia, experto en todos los estilos de salsa —brava, caleña, cubana, mambo— con especial dominio de tendencias contemporáneas. Su estilo dinámico combina salsa con merengue, bachata y música urbana, creando sets de energía constante.
+            <br><br>
+            Reconocido por transiciones creativas y mezclas innovadoras en discotecas, eventos corporativos y festivales. Su profesionalismo y manejo técnico avanzado garantizan una experiencia musical vibrante y actual.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <h2 class="section-title">Contáctanos</h2>
+      <p class="section-subtitle">Estamos listos para hacer realidad tu evento soñado</p>
+      
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Ubicación</h3>
+          <p>Parque Alameda<br>Carrera 23A #7A-15<br>Cali, Colombia</p>
+        </div>
+        
+        <div class="contact-card" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 140, 0, 0.15) 100%); border: 3px solid rgba(255, 215, 0, 0.5); transform: scale(1.08);">
+          <div class="contact-icon">📞</div>
+          <h3 style="color: #ffed4e; font-size: 1.6rem;">Asesora Comercial</h3>
+          <p><a href="tel:+573176344778" style="font-size: 1.4rem; font-weight: bold; color: #ffd700;">317 634 4778</a></p>
+          <p style="font-size: 1.1rem; margin-top: 8px; color: #ffd700; font-weight: 600;">Francia Ramírez</p>
+          <p style="font-size: 0.95rem; margin-top: 12px; color: #ddd;">Agenda tu visita previa</p>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">✉️</div>
+          <h3>Email</h3>
+          <p><a href="mailto:elvacilon.salsaclub17@gmail.com">elvacilon.salsaclub17@gmail.com</a></p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">🖼️</div>
+          <h3>Galería</h3>
+          <div style="margin-top: 15px; height: 200px; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2); background: rgba(255, 215, 0, 0.05);">
+            <img src="imagen1.jpeg" alt="Interior El Vacilón Salsa Club" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">📱</div>
+          <h3>Instagram</h3>
+          <p><a href="https://instagram.com/elvacilonclub" target="_blank">@elvacilonclub</a></p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">🎥</div>
+          <h3>Video</h3>
+          <video src="video1.mp4" autoplay loop muted playsinline style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-top: 15px; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);"></video>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 60px;">
+        <p style="font-size: 1.1rem; color: #b8b8b8;">
+          Agenda una visita previa para conocer nuestras instalaciones<br>y coordinar todos los detalles de tu evento con anticipación
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">El Vacilón</div>
+      <p style="color: #888; font-size: 1.1rem; margin: 20px 0;">Salsa Club - Cali</p>
+      
+      <div class="social-links">
+        <a href="https://instagram.com/elvacilonclub" target="_blank">📱 Instagram</a>
+        <a href="https://wa.me/573176344778" target="_blank">💬 WhatsApp</a>
+        <a href="mailto:elvacilon.salsaclub17@gmail.com">✉️ Email</a>
+      </div>
+      
+      <div style="margin: 30px 0; padding: 20px; background: rgba(255, 215, 0, 0.05); border-radius: 10px; border: 1px solid rgba(255, 215, 0, 0.2);">
+        <p style="color: #b8b8b8; font-size: 1rem; margin-bottom: 10px;">Teléfono Discoteca</p>
+        <p style="color: #ffd700; font-size: 1.3rem; font-weight: 600;">
+          <a href="tel:+573147159066" style="color: #ffd700; text-decoration: none;">314 715 9066</a>
+        </p>
+      </div>
+      
+      <div class="copyright">
+        <p>© 2025 El Vacilón Salsa Club - Todos los derechos reservados</p>
+        <p style="margin-top: 10px;">Parque Alameda, Carrera 23A #7A-15, Cali, Colombia</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/573176344778?text=Hola,%20quiero%20información%20sobre%20eventos%20de%20fin%20de%20año%20en%20El%20Vacilón" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+    💬
+  </a>
+
+</body>
+</html>
